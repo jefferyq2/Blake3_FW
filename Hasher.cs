@@ -62,6 +62,11 @@ namespace Cryptography.Blake3
             return hash;
         }
 
+        public static Hash HashUTF8(string text)
+        {
+            return Hash(Encoding.UTF8.GetBytes(text));
+        }
+
         /// <summary>
         /// The default hash function.
         /// </summary>
@@ -138,6 +143,11 @@ namespace Cryptography.Blake3
             {
                 FastUpdate(_hasher, ptr, data.Length);
             }
+        }
+
+        public void UpdateUTF8(string text)
+        {
+            Update(Encoding.UTF8.GetBytes(text));
         }
 
         /// <summary>
